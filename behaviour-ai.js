@@ -3,9 +3,8 @@
 // by Roger Oliveira
 // 21/08/2019
 
-function getHash(str, algo = "SHA-256") {
-    let strBuf = new TextEncoder('utf-8').encode(str);
-    return crypto.subtle.digest(algo, strBuf)
+function getHash(str, format = "SHA-256") {
+    return crypto.subtle.digest(format, new TextEncoder('utf-8').encode(str))
         .then(hash => {
             window.hash = hash;
             // here hash is an arrayBuffer,
